@@ -130,7 +130,7 @@ class ConductivityVelocityOperatorMixIn:
                         pos : pos + len(deg), pos : pos + len(deg), id_dir
                     ]
                     eigvals_deg = np.linalg.eigvalsh(matrix_deg)
-                    gv[pos : pos + len(deg), id_dir] = np.diag(eigvals_deg)
+                    gv[pos : pos + len(deg), id_dir] = eigvals_deg
                 pos += len(deg)
         #
         self._gv_operator[i_data] = gv_operator[self._pp.get_band_indices(), :, :]
