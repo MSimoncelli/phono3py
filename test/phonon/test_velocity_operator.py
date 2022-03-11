@@ -8,7 +8,7 @@ from phono3py.phonon.velocity_operator import VelocityOperator
 
 
 def test_gv_operator_nacl(ph_nacl: Phonopy):
-    """Test of GroupVelocity by NaCl."""
+    """Test of VelocityOperator for NaCl."""
     gv_operator_square_modulus_ref = {}
     # direction 0
     gv_operator_square_modulus_ref[0] = np.array(
@@ -220,10 +220,10 @@ def test_gv_operator_nacl(ph_nacl: Phonopy):
 
 
 @pytest.mark.skip(
-    reason="This test works if the file test_velocity_operator.py is placed in /phonopy/test/phonon/test_velocity_operator.py. In this folder it returns E       fixture 'ph_si' not found"
+    reason="This test requires to place the file test_velocity_operator.py in /phonopy/test/phonon/test_velocity_operator.py. In this folder it returns E       fixture 'ph_si' not found"
 )
 def test_gv_operator_si(ph_si: Phonopy):
-    """Test of GroupVelocity by Si."""
+    """Test of VelocityOperator for Si."""
     gv_operator_square_modulus_ref = {}
     # direction 0
     gv_operator_square_modulus_ref[0] = np.array(

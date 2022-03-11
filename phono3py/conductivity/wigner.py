@@ -118,7 +118,7 @@ class ConductivityVelocityOperatorMixIn:
         self._velocity_obj.run([self._get_qpoint_from_gp_index(irgp)])
         gv_operator = self._velocity_obj.velocity_operators[0, :, :, :]
         #
-
+        gv = np.einsum("iij->ij", gv_operator).real    
         deg_sets = degenerate_sets(self._frequencies[irgp])
         # group velocities in the degenerate subspace are obtained diagonalizing the
         # velocity operator in the subspace of degeneracy.
@@ -130,13 +130,12 @@ class ConductivityVelocityOperatorMixIn:
                         pos : pos + len(deg), pos : pos + len(deg), id_dir
                     ]
                     eigvals_deg = np.linalg.eigvalsh(matrix_deg)
-                    gv_operator[
-                        pos : pos + len(deg), pos : pos + len(deg), id_dir
+                    gv[
+                        pos : pos + len(deg), id_dir
                     ] = np.diag(eigvals_deg)
                 pos += len(deg)
         #
         self._gv_operator[i_data] = gv_operator[self._pp.get_band_indices(), :, :]
-        gv = np.einsum("iij->ij", gv_operator).real
         self._gv[i_data] = gv[self._pp.get_band_indices(), :]
 
     def _set_gv_by_gv_operator(self, i_irgp, i_data):
