@@ -41,10 +41,3 @@ nosetests.xml
 .buildinfo
 .doctrees
 _build
-.DS_Store
-phono3py/.DS_Store
-test/.DS_Store
-test/cui/.DS_Store
-test/phonon3/.DS_Store
-site.cfg
-test/.DS_Store
