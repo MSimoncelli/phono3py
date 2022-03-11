@@ -195,11 +195,6 @@ class VelocityOperator(GroupVelocity):
         # this is a diagonal matrix containing the frequencies on the diagonal
         # we take the element-wise sqrt of a diagonal matrix, in eigenmodes basis
         omega_matrix = np.sqrt(np.matmul(eigvecs.T.conj(), np.matmul(dm, eigvecs)))
-
-        # analytically the matrix omega_matrix is diagonal and contains on the diagonal the
-        # phonon frequencies
-        # here we enforce the off-diagonal elements to be zero to reduce the numerical noise
-        # (in practice the off-diagonal elements are several orders of magnitude smaller than the diagonal elements)
         omega_matrix = np.diag(np.diag(omega_matrix))
         # now we go back to the Cartesian basis
         sqrt_dm = np.matmul(eigvecs, np.matmul(omega_matrix, eigvecs.T.conj()))
