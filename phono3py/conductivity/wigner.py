@@ -128,7 +128,7 @@ class ConductivityVelocityOperatorMixIn:
                 if len(deg) > 1:
                     matrix_deg = gv_operator[
                         pos : pos + len(deg), pos : pos + len(deg), id_dir
-                    ]
+                    ].copy()
                     eigvals_deg = np.linalg.eigvalsh(matrix_deg)
                     gv[pos : pos + len(deg), id_dir] = eigvals_deg
                 pos += len(deg)
